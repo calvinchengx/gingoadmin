@@ -27,3 +27,5 @@
 
 # git commit our developnent environment setup sql scripts
 !psql/*.sql
+
+gingoadmin
