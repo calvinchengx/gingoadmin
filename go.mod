@@ -1,4 +1,4 @@
-module gingoadmin
+module github.com/calvinchengx/gingoadmin
 
 go 1.12
 
@@ -10,6 +10,7 @@ require (
 	github.com/dizzyfool/genna v0.0.0-20200115224154-2b327185879c // indirect
 	github.com/gin-gonic/gin v1.5.0
 	github.com/go-ini/ini v1.52.0 // indirect
+	github.com/go-pg/pg/v9 v9.0.1
 	github.com/gogf/gf v1.11.4 // indirect
 	github.com/jawher/mow.cli v1.1.0 // indirect
 	github.com/jteeuwen/go-bindata v3.0.7+incompatible // indirect

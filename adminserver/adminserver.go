@@ -10,6 +10,8 @@ import (
 	"github.com/GoAdminGroup/go-admin/modules/language"
 	"github.com/GoAdminGroup/go-admin/plugins/admin"
 	"github.com/gin-gonic/gin"
+
+	c "github.com/calvinchengx/gingoadmin/config"
 )
 
 // Router manages the routers for our go-admin server
@@ -19,15 +21,17 @@ func Router() http.Handler {
 	// Instantiate a GoAdmin engine object.
 	eng := engine.Default()
 
+	p := c.GetPostgresConfig()
+
 	// GoAdmin global configuration, can also be written as a json to be imported.
 	cfg := config.Config{
 		Databases: config.DatabaseList{
 			"default": {
-				Host:       "127.0.0.1",
-				Port:       "5432",
-				User:       "gingoadmin_user",
-				Pwd:        "gingoadmin_password",
-				Name:       "gingoadmin_db",
+				Host:       p.Host,
+				Port:       p.Port,
+				User:       p.User,
+				Pwd:        p.Password,
+				Name:       p.Database,
 				MaxIdleCon: 50,
 				MaxOpenCon: 150,
 				Driver:     db.DriverPostgresql,

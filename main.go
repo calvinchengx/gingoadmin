@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gingoadmin/adminserver"
-	"gingoadmin/apiserver"
+	"github.com/calvinchengx/gingoadmin/adminserver"
+	"github.com/calvinchengx/gingoadmin/apiserver"
 	"log"
 	"net/http"
 	"time"
