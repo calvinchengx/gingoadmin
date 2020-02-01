@@ -30,6 +30,26 @@ go get -v ./...
 air
 ```
 
+## Managing postgresql tables and models
+
+```bash
+# model generator from postgresql tables
+GOBIN=/usr/local/bin go install github.com/dizzyfool/genna
+
+# postgresql client and orm
+go get github.com/go-pg/pg/v9
+
+# useful for translating between url/API params and model queries, via filter
+go get github.com/go-pg/urlstruct
+```
+
+## Generating structs (models) from existing postgersql tables
+
+```bash
+bash -c "genna model-named -c postgres://gingoadmin_user:gingoadmin_password@localhos
+t:5432/gingoadmin_db?sslmode=disable -o ./tmp/model.go"
+```
+
 ## Running tests
 
 ```bash

@@ -7,6 +7,7 @@ require (
 	github.com/GoAdminGroup/go-admin v1.1.9
 	github.com/GoAdminGroup/themes v0.0.20
 	github.com/cosmtrek/air v1.12.0 // indirect
+	github.com/dizzyfool/genna v0.0.0-20200115224154-2b327185879c // indirect
 	github.com/gin-gonic/gin v1.5.0
 	github.com/go-ini/ini v1.52.0 // indirect
 	github.com/gogf/gf v1.11.4 // indirect
