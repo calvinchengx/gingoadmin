@@ -11,7 +11,7 @@ func router01() http.Handler {
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello Homepage")
+		c.String(http.StatusOK, "Hello there")
 	})
 
 	r.GET("/:name", func(c *gin.Context) {
