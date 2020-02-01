@@ -1,4 +1,4 @@
-package main
+package apiserver
 
 import (
 	"net/http"
@@ -6,7 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func router01() http.Handler {
+// Router manages the api server routes
+func Router() http.Handler {
 
 	r := gin.Default()
 

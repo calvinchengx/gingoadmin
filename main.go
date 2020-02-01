@@ -1,6 +1,8 @@
 package main
 
 import (
+	"gingoadmin/adminserver"
+	"gingoadmin/apiserver"
 	"log"
 	"net/http"
 	"time"
@@ -18,23 +20,23 @@ var (
 func main() {
 
 	// APIs
-	server01 := &http.Server{
+	api := &http.Server{
 		Addr:         ":8080",
-		Handler:      router01(),
+		Handler:      apiserver.Router(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
 
 	// go-admin
-	server02 := &http.Server{
+	admin := &http.Server{
 		Addr:         ":9033",
-		Handler:      router02(),
+		Handler:      adminserver.Router(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
 
 	g.Go(func() error {
-		err := server01.ListenAndServe()
+		err := api.ListenAndServe()
 		if err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 		}
@@ -42,7 +44,7 @@ func main() {
 	})
 
 	g.Go(func() error {
-		err := server02.ListenAndServe()
+		err := admin.ListenAndServe()
 		if err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 		}

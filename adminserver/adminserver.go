@@ -1,4 +1,4 @@
-package main
+package adminserver
 
 import (
 	"net/http"
@@ -12,7 +12,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func router02() http.Handler {
+// Router manages the routers for our go-admin server
+func Router() http.Handler {
 	r := gin.Default()
 
 	// Instantiate a GoAdmin engine object.
