@@ -21,3 +21,10 @@ go run main.go
 ```bash
 go test -v ./...
 ```
+
+## Using the go-admin's cli program
+
+```bash
+# installs `adm` cli program into /usr/local/bin
+GOBIN=/usr/local/bin go install github.com/GoAdminGroup/go-admin/adm
+```
