@@ -43,7 +43,7 @@ go get github.com/go-pg/pg/v9
 go get github.com/go-pg/urlstruct
 ```
 
-## Generating structs (models) from existing postgersql tables
+## Generating structs (models) from existing postgresql tables
 
 ```bash
 bash -c "genna model-named -c postgres://gingoadmin_user:gingoadmin_password@localhos
