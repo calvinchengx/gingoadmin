@@ -14,4 +14,5 @@ require (
 	github.com/schollz/progressbar v1.0.0 // indirect
 	github.com/tdewolff/minify v2.3.6+incompatible // indirect
 	github.com/tdewolff/parse v2.3.4+incompatible // indirect
+	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 )

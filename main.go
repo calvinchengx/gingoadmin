@@ -1,6 +1,10 @@
 package main
 
 import (
+	"log"
+	"net/http"
+	"time"
+
 	_ "github.com/GoAdminGroup/go-admin/adapter/gin" // Import the adapter, it must be imported. If it is not imported, you need to define it yourself.
 	"github.com/GoAdminGroup/go-admin/engine"
 	"github.com/GoAdminGroup/go-admin/examples/datamodel"
@@ -11,9 +15,36 @@ import (
 	"github.com/GoAdminGroup/go-admin/plugins/admin"
 	_ "github.com/GoAdminGroup/themes/adminlte" // Import the theme
 	"github.com/gin-gonic/gin"
+	"golang.org/x/sync/errgroup"
+)
+
+var (
+	g errgroup.Group
 )
 
 func main() {
+
+	server01 := &http.Server{
+		Addr:         ":9033",
+		Handler:      router01(),
+		ReadTimeout:  5 * time.Second,
+		WriteTimeout: 10 * time.Second,
+	}
+
+	g.Go(func() error {
+		err := server01.ListenAndServe()
+		if err != nil && err != http.ErrServerClosed {
+			log.Fatal(err)
+		}
+		return err
+	})
+
+	if err := g.Wait(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func router01() http.Handler {
 	r := gin.Default()
 
 	// Instantiate a GoAdmin engine object.
@@ -49,5 +80,5 @@ func main() {
 	// Add configuration and plugins, use the Use method to mount to the web framework.
 	_ = eng.AddConfig(cfg).AddPlugins(adminPlugin).Use(r)
 
-	_ = r.Run(":9033")
+	return r
 }
