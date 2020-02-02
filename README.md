@@ -50,6 +50,16 @@ bash -c "genna model-named -c postgres://gingoadmin_user:gingoadmin_password@loc
 t:5432/gingoadmin_db?sslmode=disable -o ./tmp/model.go"
 ```
 
+## Schema migrations
+
+```bash
+# create [migration_name]
+# migrate
+# rollback
+# help
+go run . [command]
+```
+
 ## Running tests
 
 ```bash

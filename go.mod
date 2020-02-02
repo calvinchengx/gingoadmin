@@ -14,6 +14,7 @@ require (
 	github.com/gogf/gf v1.11.4 // indirect
 	github.com/jawher/mow.cli v1.1.0 // indirect
 	github.com/jteeuwen/go-bindata v3.0.7+incompatible // indirect
+	github.com/robinjoseph08/go-pg-migrations/v2 v2.0.1
 	github.com/schollz/progressbar v1.0.0 // indirect
 	github.com/tdewolff/minify v2.3.6+incompatible // indirect
 	github.com/tdewolff/parse v2.3.4+incompatible // indirect
