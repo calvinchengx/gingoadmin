@@ -1,16 +1,20 @@
 package config
 
 import (
+	"fmt"
+
 	"github.com/go-pg/pg/v9"
+
+	"github.com/caarlos0/env/v6"
 )
 
 // PostgresConfig persists the config for our PostgreSQL database connection
 type PostgresConfig struct {
-	Host     string
-	Port     string
-	User     string
-	Password string
-	Database string
+	Host     string `env:"POSTGRES_HOST" envDefault:"localhost"`
+	Port     string `env:"POSTGRES_PORT" envDefault:"5432"`
+	User     string `env:"POSTGRES_USER"`
+	Password string `env:"POSTGRES_PASSWORD"`
+	Database string `env:"POSTGRES_DB"`
 }
 
 // GetConnection returns our pg database connection
@@ -31,12 +35,9 @@ func GetConnection() *pg.DB {
 
 // GetPostgresConfig returns a PostgresConfig pointer with the correct Postgres Config values
 func GetPostgresConfig() *PostgresConfig {
-	return &PostgresConfig{
-		Host:     "localhost",
-		Port:     "5432",
-		User:     "gingoadmin_user",
-		Password: "gingoadmin_password",
-		Database: "gingoadmin_db",
+	c := PostgresConfig{}
+	if err := env.Parse(&c); err != nil {
+		fmt.Printf("%+v\n", err)
 	}
-
+	return &c
 }

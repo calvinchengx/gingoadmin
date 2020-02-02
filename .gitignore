@@ -28,4 +28,6 @@
 # git commit our developnent environment setup sql scripts
 !psql/*.sql
 tmp/
+.env*
+!.env.sample
 gingoadmin

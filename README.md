@@ -3,6 +3,10 @@
 ## PostgreSQL
 
 ```bash
+# load postgresql environment variables
+cp .env.sample .env
+cd .
+
 # initialise database and user
 psql -U postgres -f psql/init.sql
 # set up goadmin's tables with database and user
