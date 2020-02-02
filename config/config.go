@@ -14,24 +14,25 @@ type PostgresConfig struct {
 }
 
 // GetConnection returns our pg database connection
+// usage:
+// db := config.GetConnection()
+// defer db.Close()
 func GetConnection() *pg.DB {
 	c := GetPostgresConfig()
 	db := pg.Connect(&pg.Options{
-		Network:  c.Host + ":" + c.Port,
+		Addr:     c.Host + ":" + c.Port,
 		User:     c.User,
 		Password: c.Password,
 		Database: c.Database,
 		PoolSize: 150,
 	})
-	defer db.Close()
-
 	return db
 }
 
 // GetPostgresConfig returns a PostgresConfig pointer with the correct Postgres Config values
 func GetPostgresConfig() *PostgresConfig {
 	return &PostgresConfig{
-		Host:     "127.0.0.1",
+		Host:     "localhost",
 		Port:     "5432",
 		User:     "gingoadmin_user",
 		Password: "gingoadmin_password",
