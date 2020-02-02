@@ -3,6 +3,10 @@
 ## PostgreSQL
 
 ```bash
+# load postgresql environment variables
+cp .env.sample .env
+cd .
+
 # initialise database and user
 psql -U postgres -f psql/init.sql
 # set up goadmin's tables with database and user
@@ -48,6 +52,16 @@ go get github.com/go-pg/urlstruct
 ```bash
 bash -c "genna model-named -c postgres://gingoadmin_user:gingoadmin_password@localhos
 t:5432/gingoadmin_db?sslmode=disable -o ./tmp/model.go"
+```
+
+## Schema migrations
+
+```bash
+# create [migration_name]
+# migrate
+# rollback
+# help
+go run . [command]
 ```
 
 ## Running tests
